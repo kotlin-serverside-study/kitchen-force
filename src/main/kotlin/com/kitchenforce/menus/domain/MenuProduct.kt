@@ -11,7 +11,7 @@ import javax.persistence.*
 class MenuProduct(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    val id: Int,
+    val id: Int?,
 
     @CreatedDate
     @Column(updatable = false, nullable = false)
