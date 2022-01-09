@@ -1,4 +1,4 @@
-package com.kitchenforce.menus.domain
+package com.kitchenforce.domain.menus
 
 import org.springframework.data.annotation.CreatedDate
 import org.springframework.data.jpa.domain.support.AuditingEntityListener
@@ -8,7 +8,7 @@ import javax.persistence.*
 @Entity
 @Table
 @EntityListeners(AuditingEntityListener::class)
-class Menu(
+class MenuProduct(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Int?,
@@ -18,15 +18,12 @@ class Menu(
     val createdAt: Date,
 
     @Column(nullable = false)
-    val name: String,
-
-    @Column(nullable = false)
-    val price: Int,
-
-    @Column(nullable = false)
-    val isHidden: Boolean,
+    val quantity: Int,
 
     @ManyToOne
-    @JoinColumn(name = "menu_group_id")
-    val menuGroup: MenuGroup,
+    @JoinColumn(name = "menu_id")
+    val menu: Menu,
+
+    // TODO: Product 구현시 추가 예정
+//    val product: Product,
 )

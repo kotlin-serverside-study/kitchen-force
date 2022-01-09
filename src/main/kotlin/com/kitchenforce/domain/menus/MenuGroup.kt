@@ -1,4 +1,4 @@
-package com.kitchenforce.menus.domain
+package com.kitchenforce.domain.menus
 
 import org.springframework.data.annotation.CreatedDate
 import org.springframework.data.jpa.domain.support.AuditingEntityListener
