@@ -12,6 +12,7 @@ import javax.persistence.GeneratedValue
 import javax.persistence.GenerationType
 import javax.persistence.Id
 import javax.persistence.Table
+import javax.validation.constraints.PositiveOrZero
 
 @Entity
 @Table
@@ -19,23 +20,18 @@ import javax.persistence.Table
 class Product(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    val id: Int? = null,
+    val id: Long? = null,
 
     @Column
     val name: String,
 
     @Column
+    @field:PositiveOrZero(message = "상품의 가격은 0보다 작을 수 없습니다.")
     val price: Int
 
 ) : AuditEntity() {
     init {
-        checkValidPrice()
         checkValidProductName()
-    }
-
-    private fun checkValidPrice() {
-        if (price <0)
-            throw ProductException(ProductErrorCodeType.INVALID_PRICE)
     }
 
     private fun checkValidProductName() {

@@ -66,15 +66,4 @@ internal class ProductEntityTest @Autowired constructor(
         println("Exception = ${exception.message}")
         assertEquals(ProductErrorCodeType.INVALID_PRODUCT_NAME.errorMessage, exception.errorMessage)
     }
-
-    @Test
-    @DisplayName("상품가격이 0보다 작으면 상품 등록이 되어서는 안된다.")
-    fun productPriceValidation() {
-        val exception = assertThrows<ProductException> {
-            every { SlangDictionary.isSlang(any()) } returns true
-            Product(null, "비정상제품", -1)
-        }
-        println("Exception = ${exception.message}")
-        assertEquals(ProductErrorCodeType.INVALID_PRICE.errorMessage, exception.errorMessage)
-    }
 }
