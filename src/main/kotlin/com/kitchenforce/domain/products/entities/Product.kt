@@ -23,11 +23,11 @@ class Product(
     val id: Long? = null,
 
     @Column
-    val name: String,
+    var name: String,
 
     @Column
     @field:PositiveOrZero(message = "상품의 가격은 0보다 작을 수 없습니다.")
-    val price: Int
+    var price: Int
 
 ) : AuditEntity() {
     init {

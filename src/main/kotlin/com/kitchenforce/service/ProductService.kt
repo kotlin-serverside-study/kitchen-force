@@ -24,4 +24,13 @@ class ProductService(
     fun create(vo: Product): Product {
         return productRepository.save(vo)
     }
+
+    @Transactional
+    fun update(id: Long, data: Product): Product {
+        return findById(id).let {
+            it.name = data.name
+            it.price = data.price
+            return productRepository.save(it)
+        }
+    }
 }

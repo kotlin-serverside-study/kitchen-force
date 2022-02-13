@@ -19,4 +19,9 @@ class ProductController(
     fun create(@Valid @RequestBody vo: Product): Product {
         return service.create(vo)
     }
+
+    @PutMapping("/{id}")
+    fun update(@PathVariable id: Long, @RequestBody data: Product): Product {
+        return service.update(id, data)
+    }
 }
