@@ -1,3 +1,7 @@
 spring:
   application:
     name: kitchen-force-demo
+
+springdoc:
+  api-docs:
+    path: /api-docs
