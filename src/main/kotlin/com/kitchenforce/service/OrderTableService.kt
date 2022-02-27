@@ -60,28 +60,13 @@ class OrderTableService(
     }
 
     fun orderInfo(userId: Long): OrderTableDto {
-
-        val orderTable: OrderTable? = orderTableRepository.findByUserId(userId)
-
-        val orderTableDtoNothing: OrderTableDto = OrderTableDto(
-            userId = -1,
-            emptyness = true,
-            tableName = "-1",
-            numberOfGuests = -1
-        )
-
-        orderTable?.let {
-            val orderTableDto: OrderTableDto = OrderTableDto(
-                userId = orderTable.userId,
-                emptyness = orderTable.emptyness,
-                tableName = orderTable.name,
-                numberOfGuests = orderTable.numberOfGuests,
-                orderDtoList = orderTable.orderList.map {
-                    it.toDto()
-                }.toList(),
+        return orderTableRepository.findByUserId(userId)
+            ?.let { it.toDto() }
+            ?: return OrderTableDto(
+                userId = -1,
+                emptyness = true,
+                tableName = "-1",
+                numberOfGuests = -1
             )
-
-            return orderTableDto
-        } ?: return orderTableDtoNothing
     }
 }
