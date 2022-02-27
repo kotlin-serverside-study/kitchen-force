@@ -5,5 +5,5 @@ data class OrderTableDto(
     var emptyness: Boolean = true,
     var tableName: String = "",
     var numberOfGuests: Int = 0,
-    var orderDtoList: MutableList<OrderDto> = ArrayList()
+    var orderDtoList: List<OrderDto> = ArrayList()
 )
