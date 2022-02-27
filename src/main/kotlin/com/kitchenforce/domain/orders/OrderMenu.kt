@@ -2,6 +2,7 @@ package com.kitchenforce.domain.orders
 
 import com.kitchenforce.common.entity.AuditEntity
 import com.kitchenforce.domain.menus.Menu
+import com.kitchenforce.domain.orders.dto.OrderMenuDto
 import javax.persistence.Column
 import javax.persistence.Entity
 import javax.persistence.GeneratedValue

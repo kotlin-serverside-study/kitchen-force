@@ -5,5 +5,5 @@ data class OrderDto(
     var paymentMethod: String = "",
     var requirement: String = "",
     var deliveryAddress: String = "",
-    var orderMenuDtoList: MutableList<OrderMenuDto> = ArrayList()
+    var orderMenuDtoList: List<OrderMenuDto> = ArrayList()
 )

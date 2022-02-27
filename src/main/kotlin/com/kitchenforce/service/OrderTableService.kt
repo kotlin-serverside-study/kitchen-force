@@ -9,8 +9,8 @@ import com.kitchenforce.domain.orders.OrderRepository
 import com.kitchenforce.domain.orders.OrderTable
 import com.kitchenforce.domain.orders.OrderTableRepository
 import com.kitchenforce.domain.orders.dto.OrderDto
-import com.kitchenforce.domain.orders.dto.OrderMenuDto
 import com.kitchenforce.domain.orders.dto.OrderTableDto
+import com.kitchenforce.domain.orders.dto.toDto
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
 
@@ -87,19 +87,12 @@ class OrderTableService(
                         orderType = order.orderType,
                         paymentMethod = order.paymentMethod,
                         requirement = order.requirement,
-                        deliveryAddress = order.deliveryAddress
+                        deliveryAddress = order.deliveryAddress,
+                        orderMenuDtoList = order.orderMenuList.map {
+                            it.toDto()
+                        }.toList()
                     )
 
-                    val orderMenuList: List<OrderMenu> = order.orderMenuList
-
-                    for (orderMenu in orderMenuList) {
-
-                        val orderMenuDto: OrderMenuDto = OrderMenuDto(
-                            quantity = orderMenu.quantity,
-                            menuName = orderMenu.menu?.name ?: "메뉴 네임 미정"
-                        )
-                        orderDto.orderMenuDtoList.add(orderMenuDto)
-                    }
                     orderTableDto.orderDtoList.add(orderDto)
                 }
             }
